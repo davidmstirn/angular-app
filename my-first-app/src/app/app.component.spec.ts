@@ -22,6 +22,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('my-first-app app is running!');
+    expect(compiled.querySelector('div h1')?.textContent).toContain('Welcome to my-first-app!');
   });
 });
