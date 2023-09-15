@@ -8,8 +8,12 @@ import { Component } from '@angular/core';
 export class ServerListComponent {
   allowNewServer = false;
   serverCreationStatus = 'No server was created!';
+  serverCreated = false;
   serverName = '';
   username = '';
+  servers = ['Test Server 1', 'Test Server 2'];
+  displayDetails = false;
+  buttonLog = [];
 
   constructor() {
     setTimeout(() => {
@@ -18,6 +22,8 @@ export class ServerListComponent {
   }
 
   onCreateServer() {
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = 'Server ' + this.serverName + ' was created!';
   }
 
@@ -28,5 +34,11 @@ export class ServerListComponent {
 
   onResetUsername() {
     this.username = '';
+  }
+
+  onDisplayDetails() {
+    const now = new Date();
+    this.buttonLog.push("Clicked on " + now.toISOString());
+    this.displayDetails = !this.displayDetails;
   }
 }
