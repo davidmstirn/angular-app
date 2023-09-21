@@ -1,10 +1,10 @@
-<app-header></app-header>
+<app-header (selectFeature)="onSelectFeature($event)"></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <app-recipe-book></app-recipe-book>
-      <app-shopping-list></app-shopping-list>
+    <div class="col-md-12" [ngSwitch]="activeFeature">
+      <app-recipe-book *ngSwitchCase="'recipe-book'"></app-recipe-book>
+      <app-shopping-list *ngSwitchCase="'shopping-list'"></app-shopping-list>
+      <p *ngSwitchDefault>Page Not Found</p>
     </div>
   </div>
 </div>
-
