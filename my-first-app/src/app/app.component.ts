@@ -10,6 +10,8 @@ export class AppComponent {
     { type: 'server', name: 'testserver', content: 'Just a test!' },
   ];
 
+  gameValues: number[] = [];
+
   onServerAdded(serverData: { serverName: string; serverContent: string }) {
     this.serverElements.push({
       type: 'server',
@@ -31,5 +33,16 @@ export class AppComponent {
 
   onChangeFirst() {
     this.serverElements[0].name = "Changed!";
+  }
+
+  onGameStart() {
+    this.gameValues = [];
+  }
+
+  onGameEnd() {
+  }
+
+  onGameTick(eventValue: number) {
+    this.gameValues.push(eventValue);
   }
 }

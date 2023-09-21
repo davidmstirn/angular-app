@@ -17,4 +17,26 @@
       </app-server-element>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-game-control
+        (gameTick)="onGameTick($event)"
+        (gameStart)="onGameStart()"
+        (gameEnd)="onGameEnd()"></app-game-control>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">
+      <h4 style="text-align: end;">Odd Numbers</h4>
+      <div class="row" *ngFor="let number of gameValues">
+        <div class="col-xs-12"  *ngIf="number % 2 === 1"><app-odd [number]="number"></app-odd></div>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <h4>Even Numbers</h4>
+      <div class="row" *ngFor="let number of gameValues">
+        <div class="col-xs-12" *ngIf="number % 2 === 0"><app-even [number]="number"></app-even></div>
+      </div>
+    </div>
+  </div>
 </div>

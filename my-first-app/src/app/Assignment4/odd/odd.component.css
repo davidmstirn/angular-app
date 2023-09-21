@@ -1,0 +1,6 @@
+p {
+  font-style: italic;
+  font-family: cursive;
+  color: rgb(179, 25, 179);
+  transform: rotate(180deg);
+}
