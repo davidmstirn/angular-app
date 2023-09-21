@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -20,12 +21,10 @@ import { RecipeBookComponent } from './modules/recipe-book/recipe-book.component
     RecipeListComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    RecipeBookComponent
+    RecipeBookComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

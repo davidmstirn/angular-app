@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe.model';
 
 @Component({
@@ -9,11 +9,27 @@ import { Recipe } from 'src/app/models/recipe.model';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [
     new Recipe(
-      'Monty Python Recipe',
-      'Elderberry Mash',
-      'https://www.barfblog.com/wp-content/uploads/2018/05/Frenchman.jpg'
+      'Knight\'s Taunting',
+      'Elderberries',
+      'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail054.jpg'
+    ),
+    new Recipe(
+      'Camelot Delight',
+      'Ham and Jam and Spam (a lot)',
+      'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail041.jpg'
+    ),
+    new Recipe(
+      "Roger's Special",
+      'Shrubberies',
+      'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail140.jpg'
     ),
   ];
+
+  @Output() clickRecipe = new EventEmitter<Recipe>();
+
+  onClickRecipe(recipe: Recipe) {
+    this.clickRecipe.emit(recipe);
+  }
 
   constructor() {}
 
