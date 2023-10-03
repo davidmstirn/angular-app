@@ -15,14 +15,13 @@ export class RecipeBookComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recipeService.recipeSelected.subscribe((recipe: Recipe)=> this.selectedRecipe = recipe)
+    this.recipeService.recipeSelected.subscribe((recipe: Recipe) => {
+      if(this.selectedRecipe?.name === recipe.name) {
+        this.selectedRecipe = null;
+      } else {
+        this.selectedRecipe = recipe;
+      }
+    })
   }
 
-  onSelectRecipe(recipe: Recipe) {
-    if(this.selectedRecipe?.name === recipe.name) {
-      this.selectedRecipe = null;
-    } else {
-      this.selectedRecipe = recipe;
-    }
-  };
 }
