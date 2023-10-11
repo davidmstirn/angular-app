@@ -12,6 +12,10 @@ import { ShoppingListComponent } from './modules/shopping-list/shopping-list.com
 import { ShoppingEditComponent } from './modules/shopping-list/shopping-edit/shopping-edit.component';
 import { RecipeBookComponent } from './modules/recipe-book/recipe-book.component';
 import {DropdownDirective} from "./directives/dropdown.directive";
+import { NotFoundComponent } from './modules/not-found/not-found.component';
+import {AppRoutingModule} from "./app-routing.module";
+import { RecipeStartComponent } from './modules/recipe-book/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './modules/recipe-book/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +27,12 @@ import {DropdownDirective} from "./directives/dropdown.directive";
     ShoppingListComponent,
     ShoppingEditComponent,
     RecipeBookComponent,
-    DropdownDirective
+    DropdownDirective,
+    NotFoundComponent,
+    RecipeStartComponent,
+    RecipeEditComponent
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

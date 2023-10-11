@@ -7,6 +7,7 @@ import {ShoppingListService} from "./shopping-list.service";
 export class RecipeService {
   private recipes: Recipe[] = [
       new Recipe(
+        '0',
         'Knight\'s Taunting',
         'Elderberries',
         'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail054.jpg',
@@ -15,6 +16,7 @@ export class RecipeService {
           new Ingredient("Sugar (c)", 0.5)]
       ),
       new Recipe(
+        '1',
         'Camelot Delight',
         'Ham and Jam and Spam (a lot)',
         'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail041.jpg',
@@ -24,6 +26,7 @@ export class RecipeService {
           new Ingredient("Spam (lbs)", 3)]
       ),
       new Recipe(
+        '2',
         "Roger's Special",
         'Shrubberies',
         'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail140.jpg',
@@ -41,6 +44,10 @@ export class RecipeService {
 
   getRecipes() {
       return this.recipes.slice();
+  }
+
+  getRecipe(id: string) {
+    return this.recipes.find((r) => r.id === id);
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {

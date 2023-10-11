@@ -1,10 +1,8 @@
-<app-header (selectFeature)="onSelectFeature($event)"></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-md-12" [ngSwitch]="activeFeature">
-      <app-recipe-book *ngSwitchCase="'recipe-book'"></app-recipe-book>
-      <app-shopping-list *ngSwitchCase="'shopping-list'"></app-shopping-list>
-      <p *ngSwitchDefault>Page Not Found</p>
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
