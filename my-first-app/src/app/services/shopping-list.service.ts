@@ -13,13 +13,28 @@ export class ShoppingListService {
   ];
 
   ingredientsChanged: Subject<Ingredient[]> = new Subject<Ingredient[]>();
+  startedEditing: Subject<number> = new Subject<number>();
 
   getIngredients(): Ingredient[] {
     return this.ingredients.slice();
   }
 
+  getIngredient(index: number): Ingredient {
+    return this.ingredients[index];
+  }
+
   addIngredient(ingredient: Ingredient): void {
     this.ingredients.push(ingredient);
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  updateIngredient(index: number, ingredient: Ingredient) {
+    this.ingredients[index] = ingredient;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 

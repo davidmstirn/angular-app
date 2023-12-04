@@ -2,12 +2,14 @@ import {Recipe} from "../models/recipe.model";
 import {Injectable} from "@angular/core";
 import {Ingredient} from "../models/ingredient.model";
 import {ShoppingListService} from "./shopping-list.service";
+import {Subject} from "rxjs";
 
 @Injectable()
 export class RecipeService {
+  recipesChanged = new Subject<Recipe[]>();
+
   private recipes: Recipe[] = [
       new Recipe(
-        '0',
         'Knight\'s Taunting',
         'Elderberries',
         'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail054.jpg',
@@ -16,7 +18,6 @@ export class RecipeService {
           new Ingredient("Sugar (c)", 0.5)]
       ),
       new Recipe(
-        '1',
         'Camelot Delight',
         'Ham and Jam and Spam (a lot)',
         'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail041.jpg',
@@ -26,7 +27,6 @@ export class RecipeService {
           new Ingredient("Spam (lbs)", 3)]
       ),
       new Recipe(
-        '2',
         "Roger's Special",
         'Shrubberies',
         'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail140.jpg',
@@ -44,8 +44,23 @@ export class RecipeService {
       return this.recipes.slice();
   }
 
-  getRecipe(id: string) {
-    return this.recipes.find((r) => r.id === id);
+  getRecipe(index: number) {
+    return this.recipes[index];
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
