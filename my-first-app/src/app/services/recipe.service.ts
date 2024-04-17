@@ -8,34 +8,36 @@ import {Subject} from "rxjs";
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-      new Recipe(
-        'Knight\'s Taunting',
-        'Elderberries',
-        'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail054.jpg',
-        [
-          new Ingredient("Elderberries", 24),
-          new Ingredient("Sugar (c)", 0.5)]
-      ),
-      new Recipe(
-        'Camelot Delight',
-        'Ham and Jam and Spam (a lot)',
-        'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail041.jpg',
-        [
-          new Ingredient("Ham (loaf)", 1),
-          new Ingredient("Jam (jar)", 2),
-          new Ingredient("Spam (lbs)", 3)]
-      ),
-      new Recipe(
-        "Roger's Special",
-        'Shrubberies',
-        'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail140.jpg',
-        [
-          new Ingredient("Shrubbery", 1),
-          new Ingredient("Shrubbery (slightly higher, to create a two-level effect)", 1),
-          new Ingredient("Herring", 1)]
-      ),
-  ];
+  // private recipes: Recipe[] = [
+  //     new Recipe(
+  //       'Knight\'s Taunting',
+  //       'Elderberries',
+  //       'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail054.jpg',
+  //       [
+  //         new Ingredient("Elderberries", 24),
+  //         new Ingredient("Sugar (c)", 0.5)]
+  //     ),
+  //     new Recipe(
+  //       'Camelot Delight',
+  //       'Ham and Jam and Spam (a lot)',
+  //       'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail041.jpg',
+  //       [
+  //         new Ingredient("Ham (loaf)", 1),
+  //         new Ingredient("Jam (jar)", 2),
+  //         new Ingredient("Spam (lbs)", 3)]
+  //     ),
+  //     new Recipe(
+  //       "Roger's Special",
+  //       'Shrubberies',
+  //       'https://www.intriguing.com/mp/_pictures/grail/large/HolyGrail140.jpg',
+  //       [
+  //         new Ingredient("Shrubbery", 1),
+  //         new Ingredient("Shrubbery (slightly higher, to create a two-level effect)", 1),
+  //         new Ingredient("Herring", 1)]
+  //     ),
+  // ];
+
+  private recipes: Recipe[] = [];
 
   constructor(private shoppingListService: ShoppingListService) {
   }
@@ -65,5 +67,10 @@ export class RecipeService {
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
