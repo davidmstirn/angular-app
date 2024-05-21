@@ -8,10 +8,7 @@ import { NotFoundComponent } from './modules/not-found/not-found.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptorService} from "./interceptors/auth-interceptor.service";
-import {RecipeBookModule} from "./modules/recipe-book/recipe-book.module";
-import {ShoppingListModule} from "./modules/shopping-list/shopping-list.module";
 import {SharedModule} from "./modules/shared/shared.module";
-import {AuthModule} from "./modules/auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -22,10 +19,7 @@ import {AuthModule} from "./modules/auth/auth.module";
   imports: [
     BrowserModule,
     HttpClientModule,
-    RecipeBookModule,
     SharedModule,
-    ShoppingListModule,
-    AuthModule,
     AppRoutingModule
   ],
   providers: [
