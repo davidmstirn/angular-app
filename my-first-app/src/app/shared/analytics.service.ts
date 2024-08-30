@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Injectable(/*{ providedIn: 'root' }*/)
 export class AnalyticsService {
+
+  private count: number = 0;
+
   registerClick() {
-    console.log('Clicked!');
+    this.count++;
+    console.log(`Clicked! (${this.count})`);
   }
 }
